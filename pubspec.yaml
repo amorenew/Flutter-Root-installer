@@ -1,11 +1,13 @@
 name: root_install
-description: A new flutter plugin project.
-version: 0.0.1
-author:
-homepage:
+description: A Flutter plugin for installing any apy on a rooted Android device.
+version: 1.0.0
+homepage: https://github.com/amorenew/Flutter-Root-installer
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
+  # Flutter versions prior to 1.12 did not support the
+  # flutter.plugin.platforms map.
+  flutter: ">=1.12.0 <2.0.0"
 
 dependencies:
   flutter:

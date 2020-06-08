@@ -1,14 +1,21 @@
 # root_install
+A Flutter plugin for installing any apy on a rooted Android device.
 
-A new flutter plugin project.
+## Installation 
+#### Link on Flutter plugins
+https://pub.dev/packages/root_install
+## Usage
 
-## Getting Started
+##### Add Permissions
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+```
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+
+##### Install local Android APk file
+
+```bool isInstalled = await RootInstall.installApk('apkLocalPath');```

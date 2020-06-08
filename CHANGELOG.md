@@ -1,3 +1,7 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Add Documentation
+
+## 0.0.1
+
+* initial implementation
