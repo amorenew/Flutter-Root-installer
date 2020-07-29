@@ -65,10 +65,13 @@ public class RootInstallPlugin implements FlutterPlugin, MethodCallHandler, Acti
             System.out.println("APK Path: " + apkPath);
             File file = new File(apkPath);
             System.out.println("is APK exist: " + file.exists());
-            String command = "pm install -r " + apkPath + "; reboot;";
+            String command = "pm install -r " + apkPath + "; rm -f "+apkPath+"; reboot;";
+
+
             if (file.exists()) {
-                Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", command});
-                process.waitFor();
+                Runtime.getRuntime().exec(new String[]{"su", "-c", command}).waitFor();
+                //Runtime.getRuntime().exec(new String[]{"su","rm","-f","/storage/emulated/0/Android/data/com.amorenew.root.install.root_install_example/files/Download/"+"; reboot;"}).waitFor();
+
                 //PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
                 //pm.reboot(null);
                 result.success(true);

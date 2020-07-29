@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Add delete apk after installation
+
 ## 1.0.1
 
 * Update logic
