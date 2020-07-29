@@ -1,6 +1,6 @@
 name: root_install
-description: A Flutter plugin for installing any apy on a rooted Android device.
-version: 1.0.0
+description: A Flutter plugin for installing any app on a rooted Android device.
+version: 1.0.1
 homepage: https://github.com/amorenew/Flutter-Root-installer
 
 environment:

@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:root_install/root_install.dart';
 
 void main() => runApp(MyApp());
@@ -29,6 +32,18 @@ class _MyAppState extends State<MyApp> {
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
+            final Directory directory = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
+    String path =  directory.path;
+   String localPath = '$path/Download';
+
+     RootInstall.installApk('$localPath/app.apk');
+
+
+//bool isInstalled = await RootInstall.installApk('storage/sdcard/Download/app.apk');
+//bool isInstalled = await RootInstall.installApk('/storage/sdcard/Android/data/ae.abudhabi.wathiq.supervisor_dot/files/Download/app.apk');
+
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.

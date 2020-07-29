@@ -2,9 +2,10 @@ package com.amorenew.root.install.root_install;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.PowerManager;
 
 import androidx.annotation.NonNull;
+
+import java.io.File;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -61,11 +62,19 @@ public class RootInstallPlugin implements FlutterPlugin, MethodCallHandler, Acti
 
     void install(String apkPath) {
         try {
-            Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", "pm install -r " + apkPath + "; reboot;"});
-            process.waitFor();
-            PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
-            pm.reboot(null);
-            result.success(true);
+            System.out.println("APK Path: " + apkPath);
+            File file = new File(apkPath);
+            System.out.println("is APK exist: " + file.exists());
+            String command = "pm install -r " + apkPath + "; reboot;";
+            if (file.exists()) {
+                Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", command});
+                process.waitFor();
+                //PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+                //pm.reboot(null);
+                result.success(true);
+            } else {
+                result.success(false);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
             result.success(false);
